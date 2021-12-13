@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">       
+            <script src="https://kit.fontawesome.com/b748da6f1a.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+            <title>
+                Gallery
+            </title>
+            <link href="style.css" rel="stylesheet">
+        </head>
+
+        <body>
+          <header> 
+            <nav>
+              <ul>
+                <li><a class="bar" href="about.html">About</a></li>
+                <li><a class="bar" href="gallery.html">Gallery</a></li>
+                <li id="home-trigger" class="home home-trigger"><a href="index.html"> <i class="fas fa-home"></i></a></li>
+                <li><a class="bar" href="#">Business</a></li>
+                <li><a class="bar" href="contact.html">Contact</a></li> 
+                
+              </ul>
+            </nav>
+          </header>
+
+          <div class="app">
+              <div class="buttoncontainer">
+                <button class="bttn" @click="(seen=!seen)&&(seen2=false);animate" ><i class="fas fa-cat"></i></button>
+                <button class="bttn" @click="(seen2=!seen2)&&(seen=false)"><i class="fas fa-biking"></i></button> 
+                <button class="bttn" @click="(seen2=!seen2)&&(seen=false)"><i class="fas fa-umbrella-beach"></i></button> 
+              </div>
+
+            
+
+            <div v-show="seen" class ="aa">
+                <div class="container">
+                    <div >
+                        <img class="image"  @mouseover="hover = true" @mouseleave="hover = false" :class="{ active: hover }" v-for="image in images" :src="image.url" :alt="image.alt">
+                    </div>
+                </div>
+            </div>
+            
+            <div v-show="seen2" class ="aa">
+                <div class="container">
+                    <div >
+                        <img class="image" v-for="image in images2" :src="image.url" 
+                        :alt="image.alt">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    <script>
+
+        var vm = new Vue({
+                    el: ".app",
+                    data () { 
+                        return{
+                        seen: false,seen2:false,hover:false
+                    ,
+                          images: [
+                    { url: 'Photo/cakilnew.jpg', alt: 'I love you nature' }, 
+                    { url: 'Photo/cakilnew2.jpg', alt: 'Now with dog - Rosé' },
+                    { url: 'Photo/cakilnew3.jpeg', alt: 'I love you nature' },
+                    { url: 'Photo/cakilnew5.jpeg', alt: 'Now with dog - Rosé' },
+                    { url: 'Photo/cakilnew6.jpeg', alt: 'I love you nature' },
+                    { url: 'Photo/cakilnew7.jpeg', alt: 'Now with dog - Rosé' }
+                ],
+                images2: [{ url: 'Photo/cakilnew.jpg', alt: 'I love you nature' },
+                    { url: 'Photo/cakilnew7.jpeg', alt: 'Now with dog - Rosé' }]
+                
+                }},
+
+                methods: {
+    animate: function () {
+        this.text="Cats";
+        }
+
+    }
+  
+
+     
+            })
+
+    </script>
+
+
+
+     
+        </body>
+
+ 
+
+ 
+ 
+  </html>
